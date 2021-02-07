@@ -1,0 +1,75 @@
+.contact-list {
+  display: flex;
+  flex-direction: column;
+
+  .contact-item {
+    border-bottom: 1px solid rgba(44, 38, 5, 0.05);
+    display: flex;
+    padding: 12px;
+
+    .item-img {
+      max-width: 22%;
+
+      img {
+        border-radius: 50%;
+        width: 100%;
+      }
+    }
+
+    .item-data {
+      flex: 1;
+      margin: 0 8px;
+
+      p {
+        margin: 0;
+        padding: 2px 0;
+        font-size: 14px;
+
+        &.contact-name {
+          font-size: 18px;
+          font-weight: 700;
+        }
+        // &.contact-email {}
+        // &.contact-phone {}
+      }
+    }
+
+    .item-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+
+      button {
+        border: 0;
+        outline: none;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+
+        &.update-contact {
+          background-color: #4a90e2;
+
+          &:hover {
+            background-color: darken(#4a90e2, 10%);
+          }
+        }
+        &.delete-contact {
+          background-color: #dc4b5d;
+
+          &:hover {
+            background-color: darken(#dc4b5d, 10%);
+          }
+        }
+
+        svg {
+          color: #fff;
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}

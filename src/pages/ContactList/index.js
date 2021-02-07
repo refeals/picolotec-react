@@ -1,5 +1,8 @@
 import { useEffect } from "react"
 import { shallowEqual, useDispatch, useSelector } from "react-redux"
+import { FiRefreshCcw } from "react-icons/fi"
+import { MdDelete } from "react-icons/md"
+
 import { getContacts } from "../../actions/contacts_actions"
 import Header from "../../components/Header"
 import "../../css/ContactList.scss"
@@ -16,7 +19,28 @@ function ContactList() {
   return (
     <>
       <Header />
-      <div className="contact-list">ContactList</div>
+      <section className="contact-list">
+        {contacts.map((contact) => (
+          <div className="contact-item" key={contact.id}>
+            <div className="item-img">
+              <img src="https://placebear.com/100/100" alt={contact.name} />
+            </div>
+            <div className="item-data">
+              <p className="contact-name">{contact.name}</p>
+              <p className="contact-email">{contact.email}</p>
+              <p className="contact-phone">{contact.phone}</p>
+            </div>
+            <div className="item-buttons">
+              <button className="update-contact">
+                <FiRefreshCcw />
+              </button>
+              <button className="delete-contact">
+                <MdDelete />
+              </button>
+            </div>
+          </div>
+        ))}
+      </section>
     </>
   )
 }
