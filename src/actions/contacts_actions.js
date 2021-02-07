@@ -24,7 +24,7 @@ export const createContact = (contactData, onSuccess) => (dispatch) => {
 
 export const updateContact = (id, contactData, onSuccess) => (dispatch) => {
   return api
-    .put(`/contacts`, { ...contactData })
+    .put(`/contacts/${id}`, { ...contactData })
     .then(({ data }) => dispatch({ type: UPDATE_CONTACT, payload: data }))
     .then(() => onSuccess && onSuccess())
     .catch((err) => console.log(err))
@@ -32,7 +32,7 @@ export const updateContact = (id, contactData, onSuccess) => (dispatch) => {
 
 export const deleteContact = (id, onSuccess) => (dispatch) => {
   return api
-    .delete(`/contacts`, { params: { id } })
+    .delete(`/contacts/${id}`)
     .then(({ data }) => dispatch({ type: DELETE_CONTACT, payload: id }))
     .then(() => onSuccess && onSuccess())
     .catch((err) => console.log(err))

@@ -7,7 +7,7 @@ import { getContacts } from "../../actions/contacts_actions"
 import Header from "../../components/Header"
 import "../../css/ContactList.scss"
 
-function ContactList() {
+function ContactList({ history }) {
   const contacts = useSelector((state) => state.contacts, shallowEqual)
   const dispatch = useDispatch()
 
@@ -15,6 +15,10 @@ function ContactList() {
     dispatch(getContacts())
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
+  const handleGoToUpdate = (id) => {
+    history.push(`/update/${id}`)
+  }
 
   return (
     <>
@@ -31,7 +35,10 @@ function ContactList() {
               <p className="contact-phone">{contact.phone}</p>
             </div>
             <div className="item-buttons">
-              <button className="update-contact">
+              <button
+                className="update-contact"
+                onClick={() => handleGoToUpdate(contact.id)}
+              >
                 <FiRefreshCcw />
               </button>
               <button className="delete-contact">
