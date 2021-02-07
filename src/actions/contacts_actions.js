@@ -16,7 +16,7 @@ export const getContacts = (onSuccess) => (dispatch) => {
 
 export const createContact = (contactData, onSuccess) => (dispatch) => {
   return api
-    .post(`/contacts`, { contactData })
+    .post(`/contacts`, { ...contactData })
     .then(({ data }) => dispatch({ type: CREATE_CONTACT, payload: data }))
     .then(() => onSuccess && onSuccess())
     .catch((err) => console.log(err))
@@ -24,7 +24,7 @@ export const createContact = (contactData, onSuccess) => (dispatch) => {
 
 export const updateContact = (id, contactData, onSuccess) => (dispatch) => {
   return api
-    .put(`/contacts`, { contactData })
+    .put(`/contacts`, { ...contactData })
     .then(({ data }) => dispatch({ type: UPDATE_CONTACT, payload: data }))
     .then(() => onSuccess && onSuccess())
     .catch((err) => console.log(err))

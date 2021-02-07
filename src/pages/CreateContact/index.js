@@ -1,12 +1,16 @@
 import { useForm } from "react-hook-form"
 import Header from "../../components/Header"
+import { useDispatch } from "react-redux"
 import "../../css/CreateContact.scss"
+import { createContact } from "../../actions/contacts_actions"
 
-const CreateContact = () => {
+const CreateContact = ({ history }) => {
   const { register, handleSubmit, errors } = useForm()
+  const dispatch = useDispatch()
 
   const onSubmit = (data) => {
-    console.log(data)
+    dispatch(createContact(data))
+    history.push("/")
   }
 
   return (

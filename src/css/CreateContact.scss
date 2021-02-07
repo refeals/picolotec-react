@@ -18,6 +18,13 @@ form {
       padding: 8px;
       border-radius: 12px;
       border: 1px solid rgba(0, 0, 0, 0.2);
+      outline: none;
+      transition: border-color 0.2s ease;
+
+      &:active,
+      &:focus {
+        border-color: rgba(0, 0, 0, 0.45);
+      }
     }
 
     .error {
