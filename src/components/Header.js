@@ -1,18 +1,17 @@
-import { GoPlus } from "react-icons/go"
+import { GoHome, GoPlus } from "react-icons/go"
 import { useHistory } from "react-router-dom"
 import "../css/Header.scss"
 
 function Header({ title = "Contacts" }) {
   const history = useHistory()
 
-  const handleCreateContact = () => {
-    history.push("/create")
-  }
-
   return (
     <header>
+      <button onClick={() => history.push("/")}>
+        <GoHome />
+      </button>
       <h1>{title}</h1>
-      <button onClick={handleCreateContact}>
+      <button onClick={() => history.push("/create")}>
         <GoPlus />
       </button>
     </header>
