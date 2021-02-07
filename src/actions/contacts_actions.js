@@ -2,7 +2,6 @@ import { api } from "../api"
 import {
   GET_CONTACTS,
   CREATE_CONTACT,
-  GET_CONTACT,
   UPDATE_CONTACT,
   DELETE_CONTACT,
 } from "../actions/action_types"
@@ -23,14 +22,6 @@ export const createContact = (contactData, onSuccess) => (dispatch) => {
     .catch((err) => console.log(err))
 }
 
-export const getContact = (id, onSuccess) => (dispatch) => {
-  return api
-    .get(`/contacts/`, { params: { id } })
-    .then(({ data }) => dispatch({ type: GET_CONTACT, payload: data }))
-    .then(() => onSuccess && onSuccess())
-    .catch((err) => console.log(err))
-}
-
 export const updateContact = (id, contactData, onSuccess) => (dispatch) => {
   return api
     .put(`/contacts`, { contactData })
@@ -41,8 +32,8 @@ export const updateContact = (id, contactData, onSuccess) => (dispatch) => {
 
 export const deleteContact = (id, onSuccess) => (dispatch) => {
   return api
-    .delete(`/contacts`)
-    .then(({ data }) => dispatch({ type: DELETE_CONTACT, payload: data }))
+    .delete(`/contacts`, { params: { id } })
+    .then(({ data }) => dispatch({ type: DELETE_CONTACT, payload: id }))
     .then(() => onSuccess && onSuccess())
     .catch((err) => console.log(err))
 }
