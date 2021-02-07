@@ -3,7 +3,7 @@ import { shallowEqual, useDispatch, useSelector } from "react-redux"
 import { FiRefreshCcw } from "react-icons/fi"
 import { MdDelete } from "react-icons/md"
 
-import { getContacts } from "../../actions/contacts_actions"
+import { deleteContact, getContacts } from "../../actions/contacts_actions"
 import Header from "../../components/Header"
 import "../../css/ContactList.scss"
 
@@ -18,6 +18,10 @@ function ContactList({ history }) {
 
   const handleGoToUpdate = (id) => {
     history.push(`/update/${id}`)
+  }
+
+  const handleDelete = (id) => {
+    dispatch(deleteContact(id))
   }
 
   return (
@@ -41,7 +45,10 @@ function ContactList({ history }) {
               >
                 <FiRefreshCcw />
               </button>
-              <button className="delete-contact">
+              <button
+                className="delete-contact"
+                onClick={() => handleDelete(contact.id)}
+              >
                 <MdDelete />
               </button>
             </div>

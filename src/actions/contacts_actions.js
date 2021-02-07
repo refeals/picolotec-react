@@ -33,7 +33,7 @@ export const updateContact = (id, contactData, onSuccess) => (dispatch) => {
 export const deleteContact = (id, onSuccess) => (dispatch) => {
   return api
     .delete(`/contacts/${id}`)
-    .then(({ data }) => dispatch({ type: DELETE_CONTACT, payload: id }))
+    .then(() => dispatch({ type: DELETE_CONTACT, payload: id }))
     .then(() => onSuccess && onSuccess())
     .catch((err) => console.log(err))
 }
